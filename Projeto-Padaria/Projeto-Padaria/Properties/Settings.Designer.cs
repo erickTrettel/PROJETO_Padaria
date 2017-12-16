@@ -26,9 +26,10 @@ namespace Projeto_Padaria.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Erick\\Desktop\\PROJET" +
-            "O_Padaria\\Projeto-Padaria\\Projeto-Padaria\\BD-Padaria.mdf;Integrated Security=Tru" +
-            "e;Connect Timeout=30")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\Erick\\Desktop\\Erick" +
+            "\\Meus Arquivos\\FATEC\\2º Semestre\\PROFª ANGELINA MELARÉ - Eletiva 1 C#\\PROJETO_Pa" +
+            "daria\\PROJETO_Padaria\\Projeto-Padaria\\Projeto-Padaria\\BD-Padaria.mdf\";Integrated" +
+            " Security=True")]
         public string BD_Padaria {
             get {
                 return ((string)(this["BD_Padaria"]));
