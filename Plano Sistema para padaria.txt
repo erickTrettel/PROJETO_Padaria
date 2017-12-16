@@ -1,0 +1,11 @@
+SISTEMA P/ PADARIA - 
+
+Tela inicial
+
+Gerenciamento financeiro: controle de fluxo de caixa (registro de entradas e saídas do caixa), leitor de codigo de barras, vendas de produtos (lançamento de vendas), orçamentos, cadastro de produto, cadastro de fornecedores, cadastro de clientes, cadastro de funcionários, perdas de produto.
+
+Controle de estoque: controle de estoque mínimo, baixa automática de produtos vendidos, perdidos e consumidos internamente.
+
+Gerenciamento de dados: consulta de clientes, consulta de produtos, cosulta de fornecedores, consulta de funcionários.
+
+Relatórios: custos, produtos mais vendidos, comissão de funcionários.

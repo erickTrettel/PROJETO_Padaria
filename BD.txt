@@ -1,0 +1,107 @@
+//DELETADA
+create table administrador(
+	adm_Codigo int primary key identity,
+	adm_Login varchar (30),
+	adm_Senha varchar (30),
+	adm_Nome varchar (50)
+	);
+
+insert into administrador (adm_Login, adm_Senha, adm_Nome) values ('erick_trettel', 'testando123', 'Erick Trettel');
+
+create table cliente(
+	cl_id int primary key identity not null,
+	cl_nome varchar(50) not null,
+	cl_sexo char(1) not null,
+	cl_email varchar(30),
+	cl_telefone varchar(15),
+	cl_endereco varchar(100),
+	cl_numero varchar(4),
+	cl_bairro varchar(30),
+	cl_cidade varchar(30),
+	cl_estado char(2),
+	cl_CEP char(9),
+	cl_pais varchar(30),
+	cl_nascimento date,
+	cl_obs varchar(1000)
+);
+
+insert into cliente (cl_nome, cl_sexo, cl_email, cl_telefone, cl_endereco, cl_numero, cl_bairro, cl_cidade, cl_estado, cl_CEP, cl_pais, cl_nascimento, cl_obs) values ('Erick Trettel de Almeida', 'M', 'ericktrettel@gmail.com', '(11)97369-9232', 'Av. 7 Quedas', '650', 'Padre Bento', 'Itu', 'SP', '13313-006', 'Brasil', convert(datetime, '31-05-1999', 103), '');
+
+create table fornecedor(
+	fr_id int primary key identity not null,
+	fr_CNPJ char(18) not null,
+	fr_descricao varchar(100) not null,
+	fr_email varchar(100) not null,
+	fr_telefone varchar(15) not null,
+	fr_endereco varchar(100),
+	fr_numero varchar(4),
+	fr_bairro varchar(30),
+	fr_cidade varchar(30),
+	fr_estado char(2),
+	fr_CEP char(9),
+	fr_pais varchar(30),
+	fr_obs varchar(1000)
+	);
+
+insert into fornecedor (fr_CNPJ, fr_descricao, fr_email, fr_telefone, fr_endereco, fr_numero, fr_bairro, fr_cidade, fr_estado, fr_CEP, fr_pais, fr_obs) values ('36.611.325/0001-58', 'Lara e Benício Pizzaria Delivery Ltda', 'fiscal@laraebeniciopizzariadeliveryltda.com.br', '(11) 3860-2232', 'Viela Bica', '392', 'Moinho Velho', 'Embu das Artes', 'SP', '06805-260', 'Brasil', 'Site: www.laraebeniciopizzariadeliveryltda.com.br');
+//FIM DELETADA
+
+create table funcionario(
+	fc_id int primary key identity not null,
+	fc_nivelacesso varchar(20) not null,
+	fc_usuario varchar (50)not null,
+	fc_nome varchar(50) not null,
+	fc_sexo char(1) not null,
+	fc_cargo varchar(50) not null,
+	fc_nascimento varchar(15) not null,
+	fc_contratacao varchar(15) not null,
+	fc_endereco varchar(100),
+	fc_numero varchar(4),
+	fc_bairro varchar(30),
+	fc_cidade varchar(30),
+	fc_estado char(2),
+	fc_CEP char(9),
+	fc_pais varchar(30),
+	fc_telefone varchar(15),
+	fc_email varchar(50) not null,
+	fc_senha varchar(30) not null,
+	fc_obs varchar(1000)
+);
+
+insert into funcionario (fc_nivelacesso, fc_usuario, fc_nome, fc_sexo, fc_cargo, fc_nascimento, fc_contratacao, fc_endereco, fc_numero, fc_bairro, fc_cidade, fc_estado, fc_CEP, fc_pais, fc_telefone, fc_email, fc_senha, fc_obs) values ('master', 'E-0123456789', 'Erick Trettel de Almeida', 'M', 'Programador', convert(datetime, '31-05-1999', 103), convert(datetime ,'20-09-2017', 103), 'Av. 7 Quedas', '650', 'Padre Bento', 'Itu', 'SP', '13313-006', 'Brasil', '(11)97369-9232', 'ericktrettel@gmail.com', 'testando123', '')
+
+create table produto(
+	pr_id int primary key not null indentity,
+	pr_codigobarras varchar(300) not null,
+	pr_nome varchar(30) not null,
+	pr_marca varchar(50) not null,
+	pr_descricao varchar(100),
+	pr_precovenda float not null,
+	pr_imagem varchar(1000) not null,
+	pr_estoqueminimo int not null,
+	pr_quantidade int not null,
+	pr_datavalidade date not null,
+	//fr_id int not null,
+	//constraint fr_id foreign key (fr_id) references fornecedor (fr_id),
+	pr_obs varchar(1000)
+	);
+
+insert into produto (pr_codigobarras, pr_nome, pr_marca, pr_descricao, pr_precovenda, pr_imagem, pr_estoqueminimo, pr_quantidade, pr_datavalidade, fr_id, pr_obs) values ('65775834234-0', 'Coca-cola Lata 350 ml.', 'Coca-cola', 'Refrigerante em lata', 2.80, '../Produto/Imagens/coca-cola.jpeg', 50, 120, convert(datetime, '22-10-2018', 103), 2, '');
+
+create table venda(
+	ve_id int primary key identity(1,1) NOT NULL,
+	ve_valor float,
+	ve_data date NOT NULL,
+	cl_id int,
+	constraint cl_id foreign key (cl_id) references cliente (cl_id),
+	);
+
+create table itens_venda(
+	iv_id int primary key identity(1,1) not null,
+	pr_id int not null,
+	ve_id int,
+	iv_quantidade int not null,
+	iv_valortotalitem float not null,
+	constraint pr_id foreign key (pr_id) references produto (pr_id),
+	constraint ve_id foreign key (ve_id) references venda (ve_id)
+	);
